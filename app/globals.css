@@ -136,3 +136,15 @@ body {
   color: #16a34a;
   border: 1px solid rgba(74, 222, 128, 0.3);
 }
+
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
