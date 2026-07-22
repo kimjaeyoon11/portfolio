@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { registerGsap, gsap, ScrollTrigger, SplitText, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { registerGsap, gsap, SplitText, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 
 export default function SplitReveal({ text, className }: { text: string; className?: string }) {
   const ref = useRef<HTMLHeadingElement>(null);
