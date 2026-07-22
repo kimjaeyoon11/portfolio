@@ -1,5 +1,5 @@
 "use client";
-import { useRef, type ElementType, type ReactNode } from "react";
+import { createElement, useRef, type ElementType, type ReactNode } from "react";
 import { registerGsap, gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 
 export default function Reveal({
@@ -14,5 +14,7 @@ export default function Reveal({
       scrollTrigger: { trigger: ref.current, start: "top 85%", once: true },
     });
   }, { scope: ref });
-  return <Tag ref={ref} className={className}>{children}</Tag>;
+  // JSX 대신 createElement 사용: @react-three/fiber가 전역 JSX.IntrinsicElements를 확장하면서
+  // 제네릭 ElementType을 JSX 태그로 직접 사용할 때 타입체크가 깨지는 문제를 회피한다.
+  return createElement(Tag, { ref, className }, children);
 }
