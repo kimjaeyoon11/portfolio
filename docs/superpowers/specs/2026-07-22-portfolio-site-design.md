@@ -127,7 +127,7 @@ app/
 
 | 대상 | 저장소/조치 | 배포 |
 |---|---|---|
-| 포트폴리오 사이트 | 배포용 저장소 정리(오픈 이슈) | Vercel |
+| 포트폴리오 사이트 | 새 `kimjaeyoon11/portfolio` 저장소 | Vercel Hobby(무료, 비상업용) |
 | TripLog | `triplog-ai-planner` **Public 전환** | Vercel(키는 Vercel 환경변수; 없으면 지구본·선택화면까지 동작) |
 | 오타니 시각화 | 바탕화면 폴더 → 새 GitHub 저장소 | 정적 배포(Vercel/GitHub Pages, 키 불필요) |
 
@@ -143,7 +143,9 @@ app/
 
 ## 9. 오픈 이슈(스펙 리뷰에서 확정)
 
-1. **배포 저장소**: 현재 `AI02/portfolio` 원격이 `speclog`. → (a) 새 `portfolio` 저장소, (b) `kimjaeyoon11.github.io`(개인 페이지 URL이 깔끔), (c) 현 remote 유지 중 택1. **추천: 새 `portfolio` 저장소 + Vercel.**
-2. **3D 히어로 강도**: TripLog 지구본을 오마주한 3D를 넣을지(무거우면 절제된 파티클/셰이더로). 기본은 절제된 버전.
+1. ~~배포 저장소~~ → **새 `kimjaeyoon11/portfolio` 저장소 + Vercel Hobby(무료, 비상업용)**. Vercel이 Next.js 배포 표준이고 개인 포트폴리오는 무료 한도(100GB/월 등) 내. **확정.**
+2. ~~3D 히어로 강도~~ → **절제된 파티클/셀** 배경. `prefers-reduced-motion` 존중. **확정.**
 3. ~~LinkedIn/이력서 PDF~~ → 없음(이메일·GitHub만). **확정.**
 4. ~~Berry(Pico) 사진/자료~~ → 아직 없음, 설명 중심. **확정.**
+
+모든 오픈 이슈 확정됨 → 구현 계획(writing-plans)으로 진행.
