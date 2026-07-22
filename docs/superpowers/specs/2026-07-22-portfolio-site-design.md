@@ -39,7 +39,7 @@
 - 병역: 2024-06-04 육군 병장 만기전역(군필)
 - 자격증: Microsoft Azure AI-900 (AI Fundamentals), 운전면허 1종
 - 연락처: ✉️ kimjeayoon1@naver.com · 🐙 github.com/kimjaeyoon11
-- (선택) LinkedIn / 이력서 PDF — 있으면 추가.
+- LinkedIn / 이력서 PDF: 현재 없음 → 연락처는 이메일·GitHub만 노출.
 
 ## 4. 사이트 구조 (정보 아키텍처)
 
@@ -117,11 +117,11 @@ app/
 - 역할: 기획·구현(동명대 웹프로그래밍 프로젝트).
 - 링크: 새 GitHub 저장소 + 정적 배포(§7). (원본: 바탕화면 `20210013 김재윤/`)
 
-### 6.3 Raspberry Pi Pico 오디오 시스템
-- 개요: 임베디드 환경에서 오디오 앰프·마이크 모듈을 Raspberry Pi Pico와 연동한 오디오 입출력 시스템.
+### 6.3 Berry — Raspberry Pi Pico 오디오 시스템
+- 개요: 임베디드 환경에서 오디오 앰프·마이크 모듈을 Raspberry Pi Pico와 연동한 오디오 입출력 시스템("Berry" 프로젝트).
 - 사용 기술: Raspberry Pi Pico, I2S 오디오 인터페이스, 하드웨어 인터페이싱.
 - 주요 기능/기여: I2S 핀 공유 최적화로 하드웨어 제약 해결.
-- 링크: 하드웨어 프로젝트라 라이브 없음 — 설명·회고 중심(자료/사진 있으면 추가).
+- 링크: 하드웨어 프로젝트라 라이브 없음 — 설명·회고 중심. 사진/자료 아직 없음(확보 시 상세 보강).
 
 ## 7. 배포 & 링크 계획
 
@@ -145,5 +145,5 @@ app/
 
 1. **배포 저장소**: 현재 `AI02/portfolio` 원격이 `speclog`. → (a) 새 `portfolio` 저장소, (b) `kimjaeyoon11.github.io`(개인 페이지 URL이 깔끔), (c) 현 remote 유지 중 택1. **추천: 새 `portfolio` 저장소 + Vercel.**
 2. **3D 히어로 강도**: TripLog 지구본을 오마주한 3D를 넣을지(무거우면 절제된 파티클/셰이더로). 기본은 절제된 버전.
-3. LinkedIn/이력서 PDF 유무.
-4. Pico 프로젝트 사진/자료 유무(있으면 상세 보강).
+3. ~~LinkedIn/이력서 PDF~~ → 없음(이메일·GitHub만). **확정.**
+4. ~~Berry(Pico) 사진/자료~~ → 아직 없음, 설명 중심. **확정.**
