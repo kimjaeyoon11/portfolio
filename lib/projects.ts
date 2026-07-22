@@ -55,7 +55,7 @@ export const PROJECTS: Project[] = [
       "서버 전용 라우트로 API 키 격리(클라이언트 번들 미포함), 30분 인메모리 캐싱",
     ],
     links: [
-      { label: "라이브 데모", href: "https://triplog-ai-planner.vercel.app", kind: "live" },
+      { label: "라이브 데모", href: "https://triplog-liart.vercel.app", kind: "live" },
       { label: "GitHub", href: "https://github.com/kimjaeyoon11/triplog-ai-planner", kind: "github" },
     ],
   },
