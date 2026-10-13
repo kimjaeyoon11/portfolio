@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 html { scroll-behavior: smooth; }
-body { overflow-x: hidden; }
+body { overflow-x: hidden; word-break: keep-all; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
