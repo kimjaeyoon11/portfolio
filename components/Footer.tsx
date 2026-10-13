@@ -1,20 +1,24 @@
-const BUILT_WITH = [
-  "Next.js 16", "TypeScript", "Tailwind CSS v4", "GSAP + ScrollTrigger",
-  "GSAP SplitText", "Lenis (스무스 스크롤)", "Three.js / React Three Fiber", "lucide-react",
-];
+import Section from "./Section";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-900/10 px-6 py-14">
-      <div className="mx-auto max-w-5xl">
-        <p className="text-sm uppercase tracking-widest text-slate-500">이 포트폴리오는 이렇게 만들었습니다</p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {BUILT_WITH.map((t) => (
-            <span key={t} className="rounded-md border border-slate-900/10 bg-slate-900/[0.05] px-3 py-1 text-xs text-slate-600">{t}</span>
-          ))}
+    <>
+      <Section id="contact" title="연락">
+        <p className="max-w-[34rem] leading-[1.8] text-muted">
+          프로젝트나 채용에 관한 이야기라면 메일로 연락 주세요. 코드는 GitHub에 모두 공개되어 있습니다.
+        </p>
+        <div className="mt-6 flex flex-col gap-2 font-serif text-xl font-semibold sm:text-2xl">
+          <a href="mailto:kimjeayoon1@naver.com" className="w-fit underline decoration-berry/40 decoration-2 underline-offset-[6px] transition-colors hover:text-berry">
+            kimjeayoon1@naver.com
+          </a>
+          <a href="https://github.com/kimjaeyoon11" target="_blank" rel="noopener noreferrer" className="w-fit underline decoration-rule decoration-2 underline-offset-[6px] transition-colors hover:text-berry">
+            github.com/kimjaeyoon11
+          </a>
         </div>
-        <p className="mt-8 text-sm text-slate-500">© 2026 Kim Jaeyoon · 동명대학교 컴퓨터공학과</p>
-      </div>
-    </footer>
+      </Section>
+      <footer className="border-t border-rule">
+        <p className="mx-auto max-w-[68rem] px-5 py-8 text-sm text-faint sm:px-8">© 2026 김재윤</p>
+      </footer>
+    </>
   );
 }

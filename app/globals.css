@@ -1,7 +1,28 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ink: #1b2230;
+  --color-muted: #5d6573;
+  --color-faint: #8a919d;
+  --color-rule: #e2e5ea;
+  --color-paper: #ffffff;
+  --color-wash: #f4f5f7;
+  --color-berry: #a3254f;
+  --color-berry-soft: #f7eaf0;
+  --font-serif: var(--font-hahmlet), "Noto Serif CJK KR", serif;
+  --font-sans: var(--font-plex), "Noto Sans CJK KR", system-ui, sans-serif;
+}
+
 html { scroll-behavior: smooth; }
-body { overflow-x: hidden; }
+body { overflow-x: hidden; word-break: keep-all; overflow-wrap: anywhere; }
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--color-berry);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection { background: var(--color-berry-soft); color: var(--color-ink); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink, Code2 } from "lucide-react";
 import { PROJECTS, getProject } from "@/lib/projects";
+import MetricBars from "@/components/MetricBars";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({ slug: p.slug }));
@@ -10,15 +10,25 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const p = getProject(slug);
-  return { title: p ? `${p.title} — Kim Jaeyoon` : "Project" };
+  return { title: p ? `${p.title} | 김재윤 포트폴리오` : "프로젝트" };
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="border-t border-slate-900/10 py-8">
-      <h2 className="mb-4 font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.25em] text-emerald-700">{title}</h2>
-      {children}
+    <div className="grid gap-x-12 gap-y-3 border-t border-rule py-9 md:grid-cols-[10rem_1fr]">
+      <h2 className="font-serif text-lg font-semibold md:pt-0.5">{title}</h2>
+      <div className="min-w-0">{children}</div>
     </div>
+  );
+}
+
+function Dashes({ items }: { items: string[] }) {
+  return (
+    <ul className="max-w-[42rem] space-y-2 leading-[1.75]">
+      {items.map((t) => (
+        <li key={t} className="relative pl-4 before:absolute before:left-0 before:top-[0.8em] before:h-px before:w-2 before:bg-faint">{t}</li>
+      ))}
+    </ul>
   );
 }
 
@@ -28,57 +38,41 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   if (!p) notFound();
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-24">
-      <Link href="/#projects" className="inline-flex items-center gap-1 text-sm text-slate-500 transition hover:text-emerald-700">
-        <ArrowLeft size={16} /> 프로젝트로 돌아가기
-      </Link>
-
-      <div className="mt-8 flex items-center gap-4">
-        <div className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${p.accent} text-4xl`}>{p.icon}</div>
-        <div>
-          <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold sm:text-4xl">{p.title}</h1>
-          <p className="mt-1 text-slate-500">{p.period} · {p.role}</p>
-        </div>
+    <main className="mx-auto max-w-[68rem] px-5 sm:px-8">
+      <div className="flex items-center justify-between py-6">
+        <Link href="/" className="font-serif text-lg font-semibold">김재윤</Link>
+        <Link href="/#projects" className="text-sm text-muted transition-colors hover:text-ink">프로젝트 목록</Link>
       </div>
 
-      {p.links.length > 0 && (
-        <div className="mt-6 flex flex-wrap gap-3">
-          {p.links.map((l) => (
-            <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-slate-900/20 px-5 py-2 text-sm font-semibold transition hover:bg-slate-900/5">
-              {l.kind === "github" ? <Code2 size={16} /> : <ExternalLink size={16} />} {l.label}
-            </a>
-          ))}
-        </div>
-      )}
-
-      <Section title="개요"><p className="leading-relaxed text-slate-700">{p.overview}</p></Section>
-
-      <Section title="사용 기술">
-        <div className="flex flex-wrap gap-2">
-          {p.tech.map((t) => (
-            <span key={t} className="rounded-full border border-emerald-600/20 bg-emerald-50 px-3 py-1 text-sm text-emerald-800">{t}</span>
-          ))}
-        </div>
-      </Section>
-
-      <Section title="주요 기능">
-        <ul className="space-y-2">
-          {p.features.map((f) => (
-            <li key={f} className="flex gap-3 text-slate-700"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-600" />{f}</li>
-          ))}
-        </ul>
-      </Section>
-
-      {p.contributions.length > 0 && (
-        <Section title="직접 해결한 문제 · 기여">
-          <ul className="space-y-2">
-            {p.contributions.map((c) => (
-              <li key={c} className="flex gap-3 text-slate-700"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600" />{c}</li>
+      <div className="pb-12 pt-10 sm:pt-16">
+        <p className="flex flex-wrap gap-x-4 text-sm text-faint">
+          <span>{p.period}</span>
+          <span>{p.role}</span>
+        </p>
+        <h1 className="mt-3 font-serif text-[2.5rem] font-semibold leading-tight sm:text-[3.25rem]">{p.title}</h1>
+        <p className="mt-4 max-w-[40rem] text-[1.0625rem] leading-[1.8] text-muted">{p.tagline}</p>
+        {p.links.length > 0 && (
+          <p className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
+            {p.links.map((l) => (
+              <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="underline decoration-berry/40 underline-offset-4 hover:text-berry">
+                {l.label}
+              </a>
             ))}
-          </ul>
-        </Section>
-      )}
+          </p>
+        )}
+        {p.metrics && <MetricBars metrics={p.metrics} />}
+      </div>
+
+      <Block title="개요"><p className="max-w-[42rem] leading-[1.8]">{p.overview}</p></Block>
+      {p.contributions.length > 0 && <Block title="직접 해결한 문제"><Dashes items={p.contributions} /></Block>}
+      <Block title="주요 기능"><Dashes items={p.features} /></Block>
+      <Block title="사용 기술"><p className="max-w-[42rem] leading-[1.8] text-muted">{p.tech.join(", ")}</p></Block>
+
+      <div className="border-t border-rule py-10">
+        <Link href="/#projects" className="text-sm font-medium text-berry underline decoration-berry/30 underline-offset-4 hover:decoration-berry">
+          다른 프로젝트 보기
+        </Link>
+      </div>
     </main>
   );
 }
