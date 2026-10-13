@@ -33,7 +33,7 @@ function Particles() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[particlePositions, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.02} color="#34d399" transparent opacity={0.75} sizeAttenuation />
+      <pointsMaterial size={0.02} color="#059669" transparent opacity={0.55} sizeAttenuation />
     </points>
   );
 }

@@ -22,6 +22,39 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    slug: "berry",
+    title: "Berry — 엣지 AI 반려 로봇",
+    tagline: "라즈베리파이 5 + Hailo-8 NPU 위에서 사람을 알아보고 대화하는 데스크톱 로봇",
+    featured: true,
+    period: "2026 · 졸업작품 (4인 팀 While(True))",
+    role: "Vision AI 리드",
+    icon: "🤖",
+    accent: "from-emerald-500 to-teal-500",
+    overview:
+      "BMO에서 영감을 받은 데스크톱 AI 반려 로봇. 카메라로 주인과 손동작, 소지품을 인식하고 음성으로 대화하며 표정으로 반응한다. 비전·대화·UI를 독립 프로세스로 나눠 한 모듈이 죽어도 나머지가 계속 동작하도록 설계했다. 그중 비전 파트 전체를 맡았다.",
+    tech: [
+      "Python", "Raspberry Pi 5", "Hailo-8 NPU (26 TOPS)", "YOLOv8", "MediaPipe",
+      "OpenCV", "ArcFace", "picamera2", "SQLite", "pytest",
+    ],
+    features: [
+      "손동작 가위바위보 게임",
+      "등록된 주인 얼굴 인식(ArcFace)",
+      "등록한 소지품·착용 모자 인식",
+      "사람이 가까이 오면 깨어나는 근접 웨이크업",
+      "음성 대화(STT → LLM → TTS)와 이름·취미 장기기억",
+      "대화에 따라 바뀌는 표정 UI와 미니 앱 5종",
+    ],
+    contributions: [
+      "MediaPipe와 Hailo 추론을 스레드로 병렬화하고 공유 메모리로 결과를 합쳐 10~15fps → 40~60fps",
+      "프로세스 간 JSON 통신을 임시 파일 + 원자적 교체(os.replace)로 바꿔 읽기 손상률 99.69% → 0%",
+      "picamera2의 RGB888 프레임이 실제로는 BGR 순서임을 찾아내 인식 오류 해결",
+      "손동작 판별을 거리비 방식에서 관절 각도 + 거리비 결합 방식으로 개선",
+      "시선 기반 웨이크업을 YOLO 사람 박스 높이 + 히스테리시스 기반 근접 감지로 교체",
+      "카메라·NPU·마이크 없이 돌아가는 테스트 구조로 하드웨어 없이 검증 가능하게 구성",
+    ],
+    links: [],
+  },
+  {
     slug: "triplog",
     title: "TripLog — AI 여행 동선 플래너",
     tagline: "지구본을 돌려 고르면 실제 지도·요금·AI로 완성되는 여행 플래너",
@@ -85,22 +118,6 @@ export const PROJECTS: Project[] = [
       { label: "라이브", href: "https://ohtani-viz.vercel.app", kind: "live" },
       { label: "GitHub", href: "https://github.com/kimjaeyoon11/ohtani-viz", kind: "github" },
     ],
-  },
-  {
-    slug: "berry",
-    title: "Berry — Raspberry Pi Pico 오디오 시스템",
-    tagline: "임베디드 오디오 입출력 · I2S 핀 공유 최적화",
-    featured: false,
-    period: "임베디드 프로젝트",
-    role: "구현",
-    icon: "🎵",
-    accent: "from-green-500 to-teal-600",
-    overview:
-      "임베디드 환경에서 오디오 앰프·마이크 모듈을 Raspberry Pi Pico와 연동해 오디오 입출력 시스템을 구축한 'Berry' 프로젝트. 하드웨어 제약 속에서 창의적 해결책을 도출했다.",
-    tech: ["Raspberry Pi Pico", "I2S 오디오 인터페이스", "하드웨어 인터페이싱"],
-    features: ["오디오 앰프·마이크 모듈 연동", "I2S 기반 입출력"],
-    contributions: ["I2S 핀 공유 최적화로 하드웨어 제약 해결"],
-    links: [],
   },
 ];
 
