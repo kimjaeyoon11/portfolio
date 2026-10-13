@@ -4,17 +4,6 @@ export interface ProjectLink {
   kind: "live" | "github";
 }
 
-export interface Metric {
-  label: string;
-  before: number;
-  after: number;
-  max: number;
-  unit: string;
-  beforeText: string;
-  afterText: string;
-  note: string;
-}
-
 export interface Project {
   slug: string;
   title: string;
@@ -22,7 +11,8 @@ export interface Project {
   featured: boolean;
   period: string;
   role: string;
-  metrics?: Metric[];
+  icon: string;
+  accent: string; // tailwind gradient classes
   overview: string;
   tech: string[];
   features: string[];
@@ -33,11 +23,13 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     slug: "berry",
-    title: "Berry",
-    tagline: "사람을 알아보고 말을 거는 탁상용 AI 로봇. 라즈베리파이 5와 Hailo-8 NPU 위에서 돈다.",
+    title: "Berry — 엣지 AI 반려 로봇",
+    tagline: "라즈베리파이 5 + Hailo-8 NPU 위에서 사람을 알아보고 대화하는 데스크톱 로봇",
     featured: true,
-    period: "2026 졸업작품, 4인 팀",
+    period: "2026 · 졸업작품 (4인 팀 While(True))",
     role: "Vision AI 리드",
+    icon: "🤖",
+    accent: "from-emerald-500 to-teal-500",
     overview:
       "BMO에서 영감을 받은 데스크톱 AI 반려 로봇. 카메라로 주인과 손동작, 소지품을 인식하고 음성으로 대화하며 표정으로 반응한다. 비전·대화·UI를 독립 프로세스로 나눠 한 모듈이 죽어도 나머지가 계속 동작하도록 설계했다. 그중 비전 파트 전체를 맡았다.",
     tech: [
@@ -60,29 +52,17 @@ export const PROJECTS: Project[] = [
       "시선 기반 웨이크업을 YOLO 사람 박스 높이 + 히스테리시스 기반 근접 감지로 교체",
       "카메라·NPU·마이크 없이 돌아가는 테스트 구조로 하드웨어 없이 검증 가능하게 구성",
     ],
-    metrics: [
-      {
-        label: "비전 처리 속도",
-        before: 15, after: 60, max: 60, unit: "fps",
-        beforeText: "10~15fps", afterText: "40~60fps",
-        note: "손 인식과 객체 탐지를 순서대로 돌리던 구조를 스레드 병렬 구조로 바꾼 뒤",
-      },
-      {
-        label: "프로세스 간 JSON 읽기 손상률",
-        before: 99.69, after: 0, max: 100, unit: "%",
-        beforeText: "99.69%", afterText: "0%",
-        note: "일반 쓰기를 임시 파일 + 원자적 교체로 바꾼 뒤, 같은 반복 테스트 기준",
-      },
-    ],
     links: [],
   },
   {
     slug: "triplog",
-    title: "TripLog",
-    tagline: "여행지를 고르면 실제 지도 경로와 항공·호텔 요금으로 일정을 짜주고, Claude와 대화하며 고칠 수 있는 여행 플래너.",
+    title: "TripLog — AI 여행 동선 플래너",
+    tagline: "지구본을 돌려 고르면 실제 지도·요금·AI로 완성되는 여행 플래너",
     featured: true,
     period: "2026",
-    role: "개인 프로젝트, 기획부터 구현까지",
+    role: "기획 · 설계 · 구현 전부 (개인 프로젝트)",
+    icon: "✈️",
+    accent: "from-emerald-500 to-teal-500",
     overview:
       "3D 지구본으로 여행지를 고르면 실제 구글 지도 기반 동선을 자동으로 그리고, 실제 항공·호텔 요금으로 예산을 잡으며, Claude와 대화하며 일정을 다듬는 여행 플래너. 여러 실데이터(지도·경로·요금·LLM)를 하나의 UX로 통합했다.",
     tech: [
@@ -115,10 +95,12 @@ export const PROJECTS: Project[] = [
   {
     slug: "ohtani",
     title: "오타니 쇼헤이 데이터 시각화",
-    tagline: "투수와 타자를 함께 하는 오타니의 기록을 스크롤을 따라 읽는 이야기로 풀었다.",
+    tagline: "스크롤 스토리텔링으로 풀어낸 투타 겸업(이도류) 기록",
     featured: false,
-    period: "웹프로그래밍 수업 과제",
-    role: "기획과 구현",
+    period: "동명대 웹프로그래밍",
+    role: "기획 · 구현",
+    icon: "⚾",
+    accent: "from-teal-500 to-emerald-600",
     overview:
       "야구 선수 오타니 쇼헤이의 투타 겸업 기록을 스크롤 스토리텔링으로 비교·시각화한 웹. 복잡한 통계를 스토리 흐름으로 재구성해 몰입감 있게 전달한다.",
     tech: ["HTML", "CSS", "Vanilla JavaScript", "GSAP (ScrollTrigger)"],

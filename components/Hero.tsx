@@ -1,40 +1,35 @@
+"use client";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
-const NAV = [
-  { label: "프로젝트", href: "#projects" },
-  { label: "기술", href: "#skills" },
-  { label: "연락", href: "#contact" },
-];
+const HeroCanvas = dynamic(() => import("./HeroCanvas"), { ssr: false });
 
 export default function Hero() {
   return (
-    <header>
-      <div className="mx-auto flex max-w-[68rem] items-center justify-between px-5 py-6 sm:px-8">
-        <Link href="/" className="font-serif text-lg font-semibold">김재윤</Link>
-        <nav className="flex gap-5 text-sm text-muted sm:gap-7">
-          {NAV.map((n) => (
-            <a key={n.href} href={n.href} className="transition-colors hover:text-ink">{n.label}</a>
-          ))}
-        </nav>
+    <section id="hero" className="relative flex min-h-screen items-center overflow-hidden">
+      <div className="absolute inset-0 -z-10 opacity-60">
+        <HeroCanvas />
       </div>
-
-      <div className="mx-auto max-w-[68rem] px-5 pb-16 pt-14 sm:px-8 sm:pb-24 sm:pt-24">
-        <h1 className="max-w-[16ch] font-serif text-[2.5rem] font-semibold leading-[1.18] tracking-[-0.01em] sm:text-[3.75rem]">
-          엣지 비전 AI와 웹 서비스를 만듭니다
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-[#f7f6f2]/30 to-[#f7f6f2]" />
+      <div className="mx-auto w-full max-w-5xl px-6">
+        <p className="mb-4 font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.3em] text-emerald-700">
+          Kim Jaeyoon · Developer
+        </p>
+        <h1 className="font-[family-name:var(--font-display)] text-5xl font-bold leading-[1.05] sm:text-7xl">
+          웹 · AI · 임베디드를<br />직접 만드는 개발자
         </h1>
-        <p className="mt-7 max-w-[36rem] text-[1.0625rem] leading-[1.8] text-muted">
-          동명대학교 컴퓨터공학과 4학년 김재윤입니다. 라즈베리파이 위에서 실시간으로 도는
-          비전 파이프라인을 만들었고, 실제 지도와 요금 데이터를 엮은 여행 플래너를 혼자 만들었습니다.
+        <p className="mt-6 max-w-xl text-lg text-slate-600">
+          동명대학교 컴퓨터공학과. 아이디어를 실제로 동작하는 제품으로 구현합니다.
         </p>
-        <p className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.9375rem]">
-          <a href="mailto:kimjeayoon1@naver.com" className="underline decoration-rule decoration-2 underline-offset-4 transition-colors hover:decoration-berry">
-            kimjeayoon1@naver.com
-          </a>
-          <a href="https://github.com/kimjaeyoon11" target="_blank" rel="noopener noreferrer" className="underline decoration-rule decoration-2 underline-offset-4 transition-colors hover:decoration-berry">
-            github.com/kimjaeyoon11
-          </a>
-        </p>
+        <div className="mt-9 flex flex-wrap gap-4">
+          <Link href="#projects" className="rounded-full bg-emerald-600 px-7 py-3 font-semibold text-white transition hover:bg-emerald-700">
+            프로젝트 보기
+          </Link>
+          <Link href="#contact" className="rounded-full border border-slate-900/20 px-7 py-3 font-semibold text-slate-900 transition hover:bg-slate-900/5">
+            연락하기
+          </Link>
+        </div>
       </div>
-    </header>
+    </section>
   );
 }
