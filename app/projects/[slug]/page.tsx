@@ -52,6 +52,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </div>
       )}
 
+      {p.highlights && (
+        <div className="mt-8 flex flex-wrap gap-3">
+          {p.highlights.map((h) => (
+            <span key={h} className="rounded-xl bg-emerald-50 px-4 py-2 font-bold text-emerald-800">{h}</span>
+          ))}
+        </div>
+      )}
+
       <Section title="개요"><p className="leading-relaxed text-slate-700">{p.overview}</p></Section>
 
       <Section title="사용 기술">
@@ -62,6 +70,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </div>
       </Section>
 
+      {p.contributions.length > 0 && (
+        <Section title="직접 해결한 문제">
+          <ul className="space-y-2">
+            {p.contributions.map((c) => (
+              <li key={c} className="flex gap-3 text-slate-700"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600" />{c}</li>
+            ))}
+          </ul>
+        </Section>
+      )}
       <Section title="주요 기능">
         <ul className="space-y-2">
           {p.features.map((f) => (
@@ -70,15 +87,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </ul>
       </Section>
 
-      {p.contributions.length > 0 && (
-        <Section title="직접 해결한 문제 · 기여">
-          <ul className="space-y-2">
-            {p.contributions.map((c) => (
-              <li key={c} className="flex gap-3 text-slate-700"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600" />{c}</li>
-            ))}
-          </ul>
-        </Section>
-      )}
     </main>
   );
 }

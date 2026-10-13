@@ -2,8 +2,8 @@ import Reveal from "./ui/Reveal";
 import SplitReveal from "./ui/SplitReveal";
 
 const FACTS = [
-  { icon: "🎓", label: "학력", value: "동명대학교 컴퓨터공학과" },
-  { icon: "🎖️", label: "병역", value: "2024.06.04 육군 병장 만기전역 (군필)" },
+  { icon: "🎓", label: "학력", value: "동명대학교 컴퓨터공학과 4학년" },
+  { icon: "🏆", label: "수상", value: "2026 AI 해커톤 부산경제진흥원장상" },
 ];
 
 export default function About() {
@@ -12,8 +12,7 @@ export default function About() {
       <p className="mb-3 font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.3em] text-emerald-700">About</p>
       <SplitReveal text="문제를 정의하고, 끝까지 구현합니다." className="font-[family-name:var(--font-display)] text-3xl font-bold sm:text-5xl" />
       <Reveal as="p" className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
-        웹 프론트엔드부터 AI 서비스 통합, 임베디드 하드웨어까지 직접 만들어 왔습니다.
-        복잡한 것을 단순한 사용자 경험으로 풀어내는 데 관심이 많습니다.
+        웹 서비스부터 엣지 AI 하드웨어까지 직접 만들어 왔습니다.
       </Reveal>
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {FACTS.map((f, i) => (

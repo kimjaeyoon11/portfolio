@@ -25,6 +25,13 @@ export default function Projects() {
                 </div>
                 <h3 className="mt-5 font-[family-name:var(--font-display)] text-2xl font-bold">{p.title}</h3>
                 <p className="mt-2 text-slate-600">{p.tagline}</p>
+                {p.highlights && (
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    {p.highlights.map((h) => (
+                      <span key={h} className="rounded-xl bg-emerald-50 px-4 py-2 text-[0.95rem] font-bold text-emerald-800">{h}</span>
+                    ))}
+                  </div>
+                )}
                 <div className="mt-4 flex flex-wrap gap-2">
                   {p.tech.slice(0, 5).map((t) => (
                     <span key={t} className="rounded-md bg-slate-900/[0.05] px-2 py-1 text-xs text-slate-600">{t}</span>
